@@ -1,0 +1,14 @@
+create table memo(
+idx number not null primary key,
+write varchar2(50) not null,
+memo varchar2(200) not null,
+post_date date default sysdate
+);
+
+insert into memo (idx,write,memo) values(1,'kim','첫번째 이모');
+insert into memo (idx,write,memo) values(2,'pack','두번째 이모');
+
+commit;
+select * from memo;
+
+select * from memo order by idx desc
