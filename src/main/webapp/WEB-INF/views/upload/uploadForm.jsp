@@ -1,10 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<%@ include file="../include/header.jsp" %>
+<style>
+iframe{
+width:400px;
+heigth:200px;
+border:1px;
+border-style:solid;
+}
+</style>
 
 </head>
 <body>
@@ -13,7 +22,7 @@
 enctype="multipart/form-data" target="iframe1">
 
 <input type="file" name="file"/>
-<input type="submit" value="업로드"/>
+<input type="submit" value="�뾽濡쒕뱶"/>
 </form>
 <iframe name="iframe1"></iframe>
 

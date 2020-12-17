@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.spring03.model.memo.dto.MemoDTO;
-import com.example.spring03.service.memo.MemoService;
+import com.example.spring03.model.service.memo.MemoService;
 
 @Controller
 @RequestMapping("/memo/*") //공통적인 매핑

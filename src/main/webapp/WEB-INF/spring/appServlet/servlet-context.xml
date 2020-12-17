@@ -20,9 +20,9 @@
 
 
 
-	<resources location="/WEB-INF/view/include/"
+	<resources location="/WEB-INF/views/include/"
 		mapping="/include/**" />
-	<resources location="/WEB-INF/view/images/"
+	<resources location="/WEB-INF/views/images/"
 		mapping="/images/**" />
 
 

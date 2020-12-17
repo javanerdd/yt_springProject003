@@ -1,4 +1,4 @@
-package com.example.spring03.service.memo;
+package com.example.spring03.model.service.memo;
 
 import java.util.List;
 
