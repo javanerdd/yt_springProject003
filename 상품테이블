@@ -1,0 +1,21 @@
+create table product(
+product_id number,  -- 상품코드
+product_name varchar2(50),
+price number default 0,
+description clob,  --상품 설명
+picture_url varchar2(500), -- 상품이미지 url
+primary key(product_id)
+);
+select * from product;
+insert into product values(1,'레몬',1500,'레몬에 포함된 구연한은 피로회복에 좋습니다','lemon.jpg');
+insert into product values(2,'오렌지',2000,'오렌지는 비타민 c가 풍부 합니다.','orange.jpg');
+insert into product values(3,'키위',3000,'기위는 비타민 c가 풍부합니다. 다이어트에 좋습니다','kiwi.jpg');
+insert into product values(4,'포도',8000,'포도는 보라색','grape.jpg');
+insert into product values(5,'딸기',7000,'딸기는 맛있다','stro.jpg');
+insert into product values(6,'바나나',5000,'바나나는 노랗다','banana.jpg');
+
+commit;
+
+create sequence seq_product start with 10 increment by 1;
+insert into product values (seq_product.nextval, '사과', 1500,'맛있는 사과','apple.jpg');
+commit;
