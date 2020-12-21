@@ -15,6 +15,7 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public String loginCheck(MemberDTO dto) {
+		System.out.println(dto.toString());
 		return sqlSession.selectOne("member.login_check",dto);
 	}
 	

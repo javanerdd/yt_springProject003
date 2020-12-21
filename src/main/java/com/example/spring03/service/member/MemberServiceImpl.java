@@ -19,15 +19,21 @@ public class MemberServiceImpl implements MemberService{
 		//맞으면 이름이 넘어오고틀리면 null이 넘어옴
 		
 		String name=memberDao.loginCheck(dto);
-		System.out.println(name+"  memberService~~~~ loginCheck");
-		
+		System.out.println(name +"~~~~~~~serviceImpl단111111");
 		if(name != null) { //맞으면
+			System.out.println(name +"~~~~~~~serviceImpl단22222");
+
 			session.setAttribute("userid", dto.getUserid()); //세션변수 등록
 			session.setAttribute("name", name);
 		}
-		
+		System.out.println(name +"~~~~~~~serviceImpl단333333");
+
 		return name;
 	}
+	
+	
+	
+	
 	
 	@Override
 	public void logout(HttpSession session) {
