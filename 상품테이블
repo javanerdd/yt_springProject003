@@ -19,3 +19,4 @@ commit;
 create sequence seq_product start with 10 increment by 1;
 insert into product values (seq_product.nextval, '사과', 1500,'맛있는 사과','apple.jpg');
 commit;
+commit;
