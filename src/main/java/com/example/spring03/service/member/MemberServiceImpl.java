@@ -33,8 +33,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 	
-	
-	
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate(); //세션을 모두 초기화

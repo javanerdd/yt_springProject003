@@ -1,0 +1,12 @@
+create table cart(
+cart_id number not null primary key, --장바구니 코드(일련번호)
+userid varchar2(50) not null, --아이디
+product_id number not null, -- 상품코드
+amount number default 0 -- 상품 수량
+);
+create sequence seq_cart start with 1 increment by 1;
+
+select * from cart; 
+
+-- foreign key 설정 , cart 테이블은 member테이블의 userid만 들어 갈수 잇다 제약조건이름은 cart_userid_fk
+alter table cart add constraint cart_userid_fk foreign key(userid) references member(userid);

@@ -39,7 +39,9 @@ public class MemberController {
 		// 데이터를 보낼 뷰와 데이터를 동시에 설정하기 위해 ModelAndView타입의 객체를 생성
 		
 		if(name != null) { //로그인 성공
+			
 			System.out.println(name +"  ~~~~~~controller단 널이 아님");
+			
 			mav.setViewName("home");// 시작페이지로 이동
 			System.out.println("1111111111111111111");
 		}else { // 로그인 실패
@@ -50,8 +52,7 @@ public class MemberController {
 		}
 		return mav;
 	}
-	
-	
+		
 	
 	@RequestMapping("logout.do")
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
