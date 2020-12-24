@@ -29,8 +29,8 @@ public class CartDAOImpl implements CartDAO{
 
 	@Override
 	public List<CartDTO> listCart(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("listCart() DAO´Ü~~~~~~~~~");
+		return sqlSession.selectList("cart.listCart",userid);
 	}
 
 	@Override
@@ -53,8 +53,8 @@ public class CartDAOImpl implements CartDAO{
 
 	@Override
 	public int sumMoney(String userid) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("sumMoney() DAO´Ü ~~~~~~~~~");
+		return sqlSession.selectOne("cart.sumMoney",userid);
 	}
 
 	@Override

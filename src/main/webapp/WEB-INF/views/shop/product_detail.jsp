@@ -5,6 +5,11 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+function submit_check(){
+	alert('버튼눌렷나');
+}
+</script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -34,7 +39,7 @@
 <!-- 			장바구니 담기기능 -->
 			<tr>
 				<td colspan="2">
-					<form name="form1" method="post" action="${path}/shop/cart/insert.do">
+					<form name="form1" method="post" action="${path}/shop/cart/insert.do" >
 						<input type="hidden" name="product_id" value="${dto.product_id}"/>
 						<select name="amount">
 							<c:forEach begin="1" end="10" var="i">

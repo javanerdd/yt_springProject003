@@ -2,7 +2,7 @@ package com.example.spring03.model.shop.dto;
 
 public class CartDTO {
 	
-	private int card_id;
+	private int cart_id;
 	private String userid;
 	private String name;
 	private int product_id;
@@ -12,11 +12,11 @@ public class CartDTO {
 	private int amount;
 	
 	
-	public int getCard_id() {
-		return card_id;
+	public int getCart_id() {
+		return cart_id;
 	}
-	public void setCard_id(int card_id) {
-		this.card_id = card_id;
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
 	}
 	public String getUserid() {
 		return userid;
@@ -64,7 +64,7 @@ public class CartDTO {
 	
 	@Override
 	public String toString() {
-		return "CartDTO [card_id=" + card_id + ", userid=" + userid + ", name=" + name + ", product_id=" + product_id
+		return "CartDTO [card_id=" + cart_id + ", userid=" + userid + ", name=" + name + ", product_id=" + product_id
 				+ ", product_name=" + product_name + ", price=" + price + ", money=" + money + ", amount=" + amount
 				+ "]";
 	}

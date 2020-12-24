@@ -27,8 +27,8 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public List<CartDTO> listCart(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("listCat() service´Ü~~~~~~~~");
+		return cartDao.listCart(userid);
 	}
 
 	@Override
@@ -51,8 +51,8 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public int sumMoney(String userid) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("sumMoney() service ´Ü~~~~~~~~~~");
+		return cartDao.sumMoney(userid);
 	}
 
 	@Override
