@@ -33,14 +33,12 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public void delete(int cart_id) {
-		// TODO Auto-generated method stub
-		
+		cartDao.delete(cart_id);
 	}
 
 	@Override
 	public void deleteAll(String userid) {
-		// TODO Auto-generated method stub
-		
+		cartDao.deleteAll(userid);
 	}
 
 	@Override
@@ -69,7 +67,7 @@ public class CartServiceImpl implements CartService{
 
 	@Override
 	public void modifyCart(CartDTO dto) {
-		// TODO Auto-generated method stub
+		cartDao.modifyCart(dto);
 		
 	}
 }

@@ -1,0 +1,92 @@
+create table member(
+userid varchar(50) not null primary key,
+passwd varchar(50) not null,
+name varchar(50) not null,
+email varchar(50),
+join_date datetime default now()
+);
+
+select *from member;
+
+update member set name='최지혁' where userid='cyj2549';
+
+create table product(
+product_id number,  -- 상품코드
+product_name varchar2(50),
+price number default 0,
+description clob,  --상품 설명
+picture_url varchar2(500), -- 상품이미지 url
+primary key(product_id)
+);
+select * from product;
+insert into product values(1,'레몬',1500,'레몬에 포함된 구연한은 피로회복에 좋습니다','lemon.jpg');
+insert into product values(2,'오렌지',2000,'오렌지는 비타민 c가 풍부 합니다.','orange.jpg');
+insert into product values(3,'키위',3000,'기위는 비타민 c가 풍부합니다. 다이어트에 좋습니다','kiwi.jpg');
+insert into product values(4,'포도',8000,'포도는 보라색','grape.jpg');
+insert into product values(5,'딸기',7000,'딸기는 맛있다','stro.jpg');
+insert into product values(6,'바나나',5000,'바나나는 노랗다','banana.jpg');
+
+commit;
+
+create sequence seq_product start with 10 increment by 1;
+insert into product values (seq_product.nextval, '사과', 1500,'맛있는 사과','apple.jpg');
+commit;
+select * from product order by product_name; 
+
+
+create table cart(
+cart_id number not null primary key, --장바구니 코드(일련번호)
+userid varchar2(50) not null, --아이디
+product_id number not null, -- 상품코드
+amount number default 0 -- 상품 수량
+);
+create sequence seq_cart start with 1 increment by 1;
+
+select * from cart; 
+
+delete cart where cart_id =1;
+insert into cart values (1,'kang',1,10);
+insert into cart values (2,'kang',5,4);
+
+insert into cart values(2,'111111',1,1);
+select name, product_name,price,amount,price*amount money from member m, product p, cart c
+where m.userid=c.userid and p.product_id =c.product_id;
+
+
+-- foreign key 설정 , cart 테이블은 member테이블의 userid만 들어 갈수 잇다 제약조건이름은 cart_userid_fk
+alter table cart add constraint cart_userid_fk foreign key(userid) references member(userid);
+
+commit;
+-- 제약조건 삭제
+alter table cart drop constraint cart_productid_fk;
+
+--제약조건 추가
+alter table cart add constraint cart_product_fk foreign key(product_id) references product(product_id);
+
+
+
+
+select * from all_tables where table_name 'member';
+
+    
+    
+	select cart_id, p.product_id, c.userid, name, product_name,amount, price, (price*amount) money
+	from member m, cart c, product p 
+	where m.userid=c.userid and c.product_id = p.product_id and c.userid='kang';
+    
+ commit;
+ 
+-- --관리자 테이블---------------------------------------------------------
+create table admin (
+userid varchar2(50) not null,
+passwd varchar2(50) not null,
+name varchar2(50) not null,
+email varchar2(100),
+join_date date default sysdate,
+primary key (userid)
+);
+insert into admin(userid,passwd,name) values ('admin',1234,'관리자');
+commit;
+
+
+

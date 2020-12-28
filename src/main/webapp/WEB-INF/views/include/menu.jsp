@@ -12,6 +12,7 @@
 <c:choose>
 	<c:when test="${sessionScope.userid == null}">
 		<a href="${path}/member/login.do">로그인</a>
+		<a href="${path}/admin/login.do">관리자 로그인</a>
 	</c:when>
 	<c:otherwise>
 		${sessionScope.name}님이 로그인했습니다.

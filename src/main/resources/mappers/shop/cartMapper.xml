@@ -9,7 +9,7 @@
 <mapper namespace="cart">
 
 <insert id="insert">
-	insert into (cart_id, userid, product_id, amount)
+	insert into cart(cart_id, userid, product_id, amount)
 	values (seq_cart.nextval, #{userid}, #{product_id}, #{amount})
 </insert>
 
@@ -26,7 +26,24 @@
 	where c.product_id= p.product_id and userid=#{userid}
 	
 <!-- 	NVL 함수 [ NVL( 대상 , null인 경우 값 )  -->
-	
 </select>
+
+
+<!-- 장바구니 개별상품 삭제 -->
+<delete id="delete">
+	delete from cart where cart_id=#{cart_id}
+</delete>
+
+
+<!-- 장바구니 전체 비우기 -->
+<delete id="deleteAll">
+	delete from cart where userid=#{userid}
+</delete>
+
+<update id="modify">
+	update cart set amount=#{amount} where cart_id=#{cart_id}
+</update>
+
+
 
 </mapper>

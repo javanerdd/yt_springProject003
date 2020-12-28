@@ -8,6 +8,21 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+
+<%@ include file="../include/header.jsp" %>
+<script>
+$(function(){
+	$("#btnList").click(function(){
+		location.href="${path}/shop/product/list.do";
+	});
+	
+	$("#btnDelete").click(function(){
+		if(confirm("장바구니를 비우시겠습니까?")){
+			location.href="${path}/shop/cart/deleteAll.do";
+		}
+	});
+});
+</script>
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
@@ -43,7 +58,7 @@
 			
 			<tr>
 				<td colspan="5" align="right">
-					<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###"/><br>
+					장바구니 금액 합계<fmt:formatNumber value="${map.sumMoney}" pattern="#,###,###"/><br>
 					배송료:${map.fee}<br>
 					총합계:<fmt:formatNumber value="${map.sum}" pattern="#,###,###"/>
 				</td>

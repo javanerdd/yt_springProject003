@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.print.attribute.HashAttributeSet;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.spring03.model.shop.dto.CartDTO;
 import com.example.spring03.model.shop.service.CartService;
-import com.example.spring03.model.shop.service.CartServiceImpl;
 
 @Controller
 @RequestMapping("/shop/cart/*") //공통적인 url mapping
@@ -55,6 +52,7 @@ public class CartController {
 			int sumMoney = cartService.sumMoney(userid); //금액합계
 			int fee = sumMoney >= 30000 ? 0 :2500;  //배송료 계산, 3만원 이상 무료배송
 			
+			map.put("sumMoney", sumMoney);
 			map.put("fee",fee); //배송료
 			map.put("sum",fee+sumMoney); //전체금액
 			map.put("list",list); //장바구니 목록
@@ -75,9 +73,44 @@ public class CartController {
 		
 		cartService.delete(cart_id);
 		
-		return "redirect:/cart_list";
+		return "redirect:/shop/cart/list.do";
 		
 	}
+	
+	@RequestMapping("deleteAll.do")
+	public String deleteAll(HttpSession session) {
+		String userid = (String)session.getAttribute("userid");
+		if(userid !=null) {
+			cartService.deleteAll(userid);
+		}
+		return "redirect:/shop/cart/list.do";
+	}
+	
+	@RequestMapping("update.do")
+	public String update(int[] amount, int[] cart_id, HttpSession session) {
+		
+		String userid = (String)session.getAttribute("userid");
+		for(int i = 0; i<cart_id.length; i++) {
+			System.out.println(i+" ~~~~~1111111111111");
+			if(amount[i] == 0) {
+				System.out.println(amount[i]+"  ~~~~22222222222");
+
+				cartService.delete(cart_id[i]);
+				System.out.println(cart_id[i]+"  ~~~~~3333333333333");
+
+
+			}else {
+				CartDTO dto = new CartDTO();
+				dto.setUserid(userid);
+				dto.setCart_id(cart_id[i]);
+				dto.setAmount(amount[i]);
+				cartService.modifyCart(dto);
+				System.out.println("5555555555");
+			} 
+		}
+		return "redirect:/shop/cart/list.do";
+	}
+	
 	
 	
 	
