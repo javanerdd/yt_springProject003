@@ -12,6 +12,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Inject
 	AdminDAO adminDao;
+	
 	@Override
 	public String loginCheck(MemberDTO dto) {
 		return adminDao.loginCheck(dto);

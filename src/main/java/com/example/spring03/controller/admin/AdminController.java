@@ -10,7 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.spring03.model.member.dto.MemberDTO;
 import com.example.spring03.service.admin.AdminService;
 
-@Controller("/admin/")
+@Controller
+@RequestMapping("/admin/*")
 public class AdminController {
 	
 	@Inject
@@ -21,7 +22,8 @@ public class AdminController {
 		return "admin/login";
 	}
 	
-	@RequestMapping("loginCheck.do")
+	
+	@RequestMapping("login_check.do")
 	public ModelAndView loginCheck(MemberDTO dto, HttpSession session, ModelAndView mav) {
 		String name = adminService.loginCheck(dto);
 		if(name != null) { //로그인 성공
@@ -36,7 +38,13 @@ public class AdminController {
 			mav.addObject("message","error");
 		}
 		return mav;
-		
+	}
+	
+	//관리자 로그아웃 처리
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session ) {
+		session.invalidate();
+		return "redirect:/admin/login.do";
 	}
 
 }

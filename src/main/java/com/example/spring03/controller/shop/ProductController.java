@@ -32,4 +32,12 @@ public class ProductController {
 		
 		return mav;
 	}
+	
+	@RequestMapping("/write.do")
+	public String write() {
+		return "shop/product_write";
+	}
+	
+	
+	
 }
