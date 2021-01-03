@@ -28,7 +28,7 @@ function submit_check(){
 			
 			<tr>
 				<td>가격</td>
-				<td>${dto.product_price}</td>
+				<td>${dto.price}</td>
 			</tr>
 			
 			<tr>
