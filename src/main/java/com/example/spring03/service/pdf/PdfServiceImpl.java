@@ -33,12 +33,12 @@ public class PdfServiceImpl implements PdfService {
 		try {
 			Document document = new Document(); //pdf문서를 처리하는 객체
 			
-			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:/sample"));
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:/sample.pdf"));
 			//pdf 파일의 저장경로를  c드라이브의 sample.pdf로 한다는 뜻
 			
 			document.open(); // 웹페이지에 접근하는 객체를 연다.
 			
-			BaseFont baseFont = BaseFont.createFont("C:/Widows/Fonts/HYNAML.TTF",BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
+			BaseFont baseFont = BaseFont.createFont("c:/windows/fonts/malgun.ttf",BaseFont.IDENTITY_H,BaseFont.EMBEDDED);
 			//pdf가 기본적으로 한글처리가 안되기 때문에 한글폰트 처리를 해줘야 한다.
 			//createFont 메소드에 사용할 폰트의 경로 (batang.ttc 궁서체) 파일 경로를 지정해준다.
 			

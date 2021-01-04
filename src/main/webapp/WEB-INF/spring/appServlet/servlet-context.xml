@@ -20,10 +20,9 @@
 
 
 
-	<resources location="/WEB-INF/views/include/"
-		mapping="/include/**" />
-	<resources location="/WEB-INF/views/images/"
-		mapping="/images/**" />
+	<resources location="/WEB-INF/views/include/" mapping="/include/**" />
+	<resources location="/WEB-INF/views/images/" mapping="/images/**" />
+	<resources location="/WEB-INF/views/json/" mapping="/json/**"/>
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -47,6 +46,7 @@
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value="c:/upload"></beans:constructor-arg>
 	</beans:bean>
+	
 
 
 </beans:beans>
