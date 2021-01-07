@@ -20,7 +20,7 @@
    google.setOnLoadCallback(drawChart); 
    function drawChart(){
       var jsonData = $.ajax({  // 차트그리에 필요한 json데이터 로딩, 비동기적 방식으로 호출
-         url:"${path}/json/sampleData.json",
+         url:"${path}/json/sampleData2.json",
          dataType:"json",
          //json에 sampleData.json파일을 불러온다
          //확장자가 json이면 url맵핑을 해줘야함, 안하면 자바파일 인줄 알고 404에러 발생
@@ -37,12 +37,12 @@
 //          document.getElementById('chart_div')); // 원형 그래프
          
          
-         var chart = new google.visualization.LineChart(
-            document.getElementById('chart_div')); // 선 그래프
+//          var chart = new google.visualization.LineChart(
+//             document.getElementById('chart_div')); // 선 그래프
             
             
-//          var chart = new google.visualization.ColumnChar(
-//             document.getElementsById('chart_div')); // 막대 그래프
+         var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div')); // 막대 그래프
             
             
       //차트객체.draw(데이터테이블, 옵션)
