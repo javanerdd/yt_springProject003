@@ -30,7 +30,7 @@ public class GoogleChartController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("chart_money_list.do") //화면으로 넘어가는 것이 아닌 데이터를 리턴하는 경우
+	@RequestMapping("cart_money_list.do") //화면으로 넘어가는 것이 아닌 데이터를 리턴하는 경우
 	public JSONObject cart_money_list() {
 		System.out.println("차트2 들어오냐~222222222222");
 		return googleChartService.getChartData();
