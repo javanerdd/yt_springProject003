@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
-
+<script src="${path}/ckeditor/ckeditor.js"></script>
 <script>
 function product_update(){
 	document.form1.action="${path}/shop/product/update.do";
@@ -40,6 +40,12 @@ function product_delete(){
 		<td>상품설명</td>
 		<td><textarea  rows="5" cols="60" name="description" id="description">${dto.description}</textarea></td>
 	</tr>
+	
+	<script>
+	CKEDITOR.replace("description",{
+		filebrowserUploadUrl:"${path}/imageUpload.do"
+	});
+	</script>
 	
 	<tr>
 		<td>상품이미지</td>

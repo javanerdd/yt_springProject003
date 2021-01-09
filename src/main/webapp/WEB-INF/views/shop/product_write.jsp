@@ -6,7 +6,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- <!-- include summernote css/js --> -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<link href="${path}/summernote/summernote.css" rel="stylesheet">
+<script src="${path}/summernote/summernote.js"></script>
+
+<%-- <script src="${path}/ckeditor/ckeditor.js"></script> --%>
+
 <script>
+
+$(function(){
+	$("#description").summernote({
+		height:300,
+		width:800
+	});
+});
+
+
 function product_write(){
 	var product_name=document.form1.product_name.value;
 	var price=document.form1.price.value;
@@ -22,11 +47,11 @@ function product_write(){
 		document.form1.price.focus();
 		return;
 	}
-	if(description==""){
-		alert("상품설명을 입력하세요");
-		document.form1.description.focus();
-		return;
-	}
+// 	if(description==""){
+// 		alert("상품설명을 입력하세요");
+// 		document.form1.description.focus();
+// 		return;
+// 	}
 	document.form1.action="${path}/shop/product/insert.do";
 	document.form1.submit();
 }
@@ -59,6 +84,18 @@ function product_write(){
 			<td>상품설명</td>
 			<td><textarea rows="5" cols="60" name="description" id="description"></textarea></td>
 		</tr>
+		
+		<script>
+		//id가 description인 태그에 ckeditor 적용
+// 		CKEDITOR.replace("description");
+		
+// 		이미지 업로드를 할 경우
+// 		CKEDITOR.replace("description",{
+// 			filebrowserUploadUrl:"${path}/imageUpload.do"
+// 			});
+		
+		</script>
+		
 		
 		<tr>
 			<td>상품이미지</td>
