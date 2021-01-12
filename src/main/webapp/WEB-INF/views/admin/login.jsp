@@ -47,6 +47,7 @@
 		<tr>
 			<td colspan="2" align="center">
 				<button type="button" id="btnLogin">로그인</button>
+				
 				<c:if test="${message=='nologin' }">
 					<div style="color:red;">
 						먼저 로그인 하세요.

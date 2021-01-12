@@ -6,8 +6,30 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../include/header.jsp" %>
-<script src="${path}/ckeditor/ckeditor.js"></script>
+<%-- <script src="${path}/ckeditor/ckeditor.js"></script> --%>
+
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- <!-- include summernote css/js --> -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+
 <script>
+$(function(){
+	$("#description").summernote({
+		height:300,
+		width:800
+	});
+});
+
+
+
 function product_update(){
 	document.form1.action="${path}/shop/product/update.do";
 	document.form1.submit();
@@ -41,11 +63,11 @@ function product_delete(){
 		<td><textarea  rows="5" cols="60" name="description" id="description">${dto.description}</textarea></td>
 	</tr>
 	
-	<script>
-	CKEDITOR.replace("description",{
-		filebrowserUploadUrl:"${path}/imageUpload.do"
-	});
-	</script>
+<!--  	<script> 
+ 	CKEDITOR.replace("description",{
+ 		filebrowserUploadUrl:"${path}/imageUpload.do"
+ 	});
+  	</script>  -->
 	
 	<tr>
 		<td>상품이미지</td>

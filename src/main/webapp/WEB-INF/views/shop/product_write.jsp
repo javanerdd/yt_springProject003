@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +25,14 @@
 
 <%-- <script src="${path}/ckeditor/ckeditor.js"></script> --%>
 <!-- ddddddddd -->
+
+ <c:if test = "${sessionScope.admin_userid == null}" > 
+      <script>
+           alert("로그인 하신 후 사용하세요.");                  // 다음 메시지를 출력함..
+           location.href = "${path}/admin/login.do";          // 로그인 페이지로 이동시켜주는 코드
+      </script>
+  </c:if>
+  
 <script>
 
 $(function(){

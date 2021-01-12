@@ -1,0 +1,17 @@
+-- 게시판 테이블---------------------------------------------------------------------
+create table board(
+bno number not null, -- 게시물 번호
+title varchar2(200) not null, -- 제목
+content varchar2(4000), -- 본문
+writer varchar2(50) not null, -- 작성자 아이디
+regdate date default sysdate, --날짜
+viewcnt number default 0 , -- 조회수
+primary key(bno)
+);
+
+create sequence seq_board start with 1 increment by 1;
+
+
+select * from board;
+
+insert into board(bno,title,content,writer) values (seq_board.nextval,'제목','내용','park');
