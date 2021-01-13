@@ -92,8 +92,11 @@ public class Pager {
 	public int getTotPage() {
 		return totPage;
 	}
-	public void setTotPage(int totPage) {
-		this.totPage = totPage;
+	
+	//91개의 게시물을 10개씩 9페이지를 처리하고 남은 1개의 게시물도 페이지에 출력하기 위해서
+	//항상 올림으로 처리해야된다
+	public void setTotPage(int count) {
+		totPage=(int)Math.ceil(count*1.0/PAGE_SCALE);
 	}
 	public int getTotBlock() {
 		return totBlock;
