@@ -1,6 +1,8 @@
 package com.example.spring03.model.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -48,8 +50,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public BoardDTO read(int bno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("board.view",bno);
 	}
 
 	@Override
@@ -66,19 +67,27 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardDTO> listAll(int start, int end, String search_option, String keyword) throws Exception {
-		return sqlSession.selectList("board.listAll");
+		
+		Map<String,Object> map = new HashMap();
+		map.put("search_option", search_option);
+		map.put("keyword", keyword);
+		map.put("start", start);
+		map.put("end", end);
+		
+		return sqlSession.selectList("board.listAll",map);
 	}
 
 	@Override
 	public void increaseViewcnt(int bno) throws Exception {
-		// TODO Auto-generated method stub
-
+		sqlSession.update("board.increaseViewcnt",bno);
 	}
 
 	@Override
 	public int countArticle(String search_option, String keyword) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Map<String, Object> map = new HashMap<>();
+		map.put("search_option", search_option);
+		map.put("keyword", keyword);
+		return sqlSession.selectOne("board.countAricle",map);
 	}
 
 }

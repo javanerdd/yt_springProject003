@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,11 +27,12 @@ public class BoardController {
 	
 	@RequestMapping("list.do")
 	public ModelAndView list(
-			@RequestParam(defaultValue="1") int curPage,
+			@RequestParam(defaultValue="1") int curPage, //처음에 값이 안넘어 오기때문에 기본값1을 넣음
 			@RequestParam(defaultValue="all") String search_option,
 			@RequestParam(defaultValue="") String keyword) throws Exception{
 		
-		int count =1000; //레코드 갯수
+		int count = boardService.countArticle(search_option, keyword);
+		
 		Pager pager = new Pager(count,curPage); //레코드와 원하는 페이지 번호를 주게 되면
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
@@ -66,5 +68,24 @@ public class BoardController {
 		boardService.create(dto); //레코드가 저장됨
 		
 		return "redirect:/board/list.do";  //목록 갱신
+	}
+	
+	@RequestMapping(value="view.do", method=RequestMethod.GET)
+	public ModelAndView view(@RequestParam int bno,
+			@RequestParam int curPage,
+			@RequestParam String search_option,
+			@RequestParam String keyword,
+			HttpSession session) throws Exception {
+		
+		boardService.increaseViewcnt(bno);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/view");
+		mav.addObject("dto", boardService.read(bno)); //게시물내용
+		mav.addObject("curPage", curPage);
+		mav.addObject("search_option",search_option);
+		mav.addObject("keyword",keyword);
+		
+		return mav;
 	}
 }
