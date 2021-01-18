@@ -16,7 +16,7 @@ public interface ReplyService {
 	
 	public void update(ReplyDTO dto); //´ñ±Û ¼öÁ¤
 	
-	public void delete(Integer bno); //´ñ±× »èÁ¦
+	public void delete(Integer bno); //´ñ±Û »èÁ¦
 	
 	public int count(Integer bno); //´ñ±Û °¹¼ö
 }

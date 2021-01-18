@@ -9,16 +9,23 @@
 <title>글 상세보기</title>
 <%@ include file="../include/header.jsp" %>
 <script src="${path}/ckeditor/ckeditor.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
 <script>
 $(function(){
+	listReply("1")
 	$("#btnReply").click(function(){
 		reply();
+	});
+	
+	$("#btnList").click(function(){
+		location.href="${path}/board/list.do";
 	});
 });
 
 function reply(){
 	var replytext=$("#replytext").val();
-	var bno=$("dto.bno");
+	var bno="${dto.bno}";
 	var param={"replytext" : replytext, "bno":bno};
 	
 	$.ajax({
@@ -27,8 +34,21 @@ function reply(){
 		data:param,
 		success:function(){
 			alert("댓글이 등록되었습니다.");
+			listReply(1);
 		}
 	});
+}
+
+function listReply(num){
+	$.ajax({
+		type:"post",
+		url:"${path}/reply/list.do?bno=${dto.bno}&curPage="+num,
+		success: function(result){
+			console.log(result);
+			$("#listReply").html(result);
+		}
+	});
+	
 }
 </script>
 

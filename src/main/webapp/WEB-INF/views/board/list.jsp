@@ -56,7 +56,12 @@ function list(page){
 		<c:forEach items="${map.list}" var="row">
 			<tr>
 				<td>${row.bno}</td>
-				<td><a href="${path}/board/view.do?bno=${row.bno}&curPage=${map.pager.curPage}&search_option=${map.search_option}&keyword=${map.keyword}">${row.title}</a></td>
+				<td><a href="${path}/board/view.do?bno=${row.bno}&curPage=${map.pager.curPage}&search_option=${map.search_option}&keyword=${map.keyword}">${row.title}</a>
+<!-- 				댓글갯수 -->
+				<c:if test="${row.cnt>0}">
+					<span style="color:red;">(${row.cnt})</span>
+				</c:if>
+				</td>
 				<td>${row.name}</td>
 				<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				<td>${row.viewcnt}</td>

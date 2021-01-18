@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>글쓰기</title>
 <%@ include file="../include/header.jsp" %>
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
 $(function(){
 	$("#btnSave").click(function(){

@@ -6,7 +6,7 @@
 <a href="${path}/upload/uploadForm">업로드 테스트</a> |
 
 <a href="${path}/board/list.do">게시판</a>|
-
+<a href="${path}/member/address.do">도로명 주소</a>
 <a href="${path}/shop/product/list.do">상품목록</a> |
 <c:if test="${sessionScope.admin_userid=='admin'}">
 	<a href="${path}/shop/product/write.do">상품등록</a>

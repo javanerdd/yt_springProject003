@@ -11,7 +11,8 @@
 	<select id="listAll" resultType="com.example.spring03.model.board.dto.BoardDTO">
 		
 		<include refid="paging_header"/>
-		select bno, title, writer, name, regdate, viewcnt
+		select bno, title, writer, name, regdate, viewcnt,
+		(select count(*) from reply where bno=b.bno) cnt
 		from board b, member m
 		<include refid="search"/>
 		order by bno desc

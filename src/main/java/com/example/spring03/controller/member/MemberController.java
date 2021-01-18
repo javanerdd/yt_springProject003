@@ -63,6 +63,11 @@ public class MemberController {
 		return mav; //페이지로 이동
 	}
 	
+	@RequestMapping("address.do")
+	public String address() {
+		return "member/join";
+	}
+	
 	 //요청 > controller > serviceimpl >  
 	 //dao > serviceimpl > controller > jsp 
 }
